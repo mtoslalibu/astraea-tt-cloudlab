@@ -109,9 +109,13 @@ mkdir -p /local/astraea-spans
 sudo chmod ugo+rwx /local/astraea-spans
 cp /local/astraea-scripts/astraea-span-allenabled /local/astraea-spans/states
 
+cd /local/train-ticket
+sudo docker-compose build
+
+echo "Built tt and you can boot them up with sudo docker-compose up in tt dir"
 
 #echo "Everything is installed and built now. go ahead and create external fs (mydata)"
-echo "After that please go back to train ticket - and docker-compose build then docker-compose up" >> /local/mertlogs
+echo "After that please go back to train ticket - and docker-compose up" >> /local/mertlogs
 
 ## send email
-mail -s "TrainTicket instance finished setting up!" $(geni-get slice_email)
+mail -s "TrainTicket instance finished setting up, hooray!" $(geni-get slice_email)
