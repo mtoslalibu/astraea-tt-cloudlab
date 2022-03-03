@@ -44,7 +44,7 @@ sudo systemctl daemon-reload
 sudo systemctl start docker
 ps aux | grep -i docker | grep -v grep >> /local/mertlogs
 echo "Check above for directory on where docker works" >> /local/mertlogs
-
+sudo chmod -R ugo+rwx /mydata
 
 cd /local
 git clone https://github.com/mtoslalibu/astraea-scripts.git
@@ -116,6 +116,8 @@ echo "Built tt and you can boot them up with sudo docker-compose up in tt dir"
 
 #echo "Everything is installed and built now. go ahead and create external fs (mydata)"
 echo "After that please go back to train ticket - and docker-compose up" >> /local/mertlogs
+
+sudo chmod -R ugo+rwx /local
 
 ## send email
 mail -s "TrainTicket instance finished setting up, hooray!" $(geni-get slice_email)
