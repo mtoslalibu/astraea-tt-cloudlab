@@ -37,7 +37,7 @@ sudo mkdir /mydata
 sudo /usr/local/etc/emulab/mkextrafs.pl /mydata
 sudo chmod ugo+rwx /mydata
 SEARCH_STRING="ExecStart=/usr/bin/dockerd -H fd://"
-REPLACE_STRING="ExecStart=/usr/bin/dockerd -g /mydata -H fd://"
+REPLACE_STRING="ExecStart=/usr/bin/dockerd --data-root /mydata -H fd://"
 sudo sed -i "s#$SEARCH_STRING#$REPLACE_STRING#" /lib/systemd/system/docker.service
 sudo rsync -aqxP /var/lib/docker/ /mydata
 sudo systemctl daemon-reload
